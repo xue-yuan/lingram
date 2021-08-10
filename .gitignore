@@ -1,0 +1,9 @@
+venv/
+__pycache__
+
+config.toml
+*.log
+*.png
+
+.DS_Store
+.idea/

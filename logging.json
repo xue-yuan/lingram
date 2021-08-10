@@ -1,0 +1,53 @@
+{
+    "version": 1,
+    "disable_existing_loggers": false,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "standard",
+            "level": "DEBUG"
+        },
+        "file": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "formatter": "standard",
+            "level": "DEBUG",
+            "encoding": "utf8",
+            "maxBytes": 1048576,
+            "filename": "logs/sticker.log",
+            "backupCount": 20
+        }
+    },
+    "loggers": {
+        "": {
+            "handlers": [
+                "console",
+                "file"
+            ],
+            "propagate": false,
+            "level": "DEBUG"
+        },
+        "telegram": {
+            "level": "WARNING"
+        },
+        "bot.bot": {
+            "level": "DEBUG"
+        },
+        "apscheduler": {
+            "level": "WARNING"
+        },
+        "urllib3": {
+            "level": "WARNING"
+        },
+        "PIL.PngImagePlugin": {
+            "level": "WARNING"
+        }
+    },
+    "formatters": {
+        "short": {
+            "format": "[%(name)s][%(levelname)s] >>> %(message)s"
+        },
+        "standard": {
+            "format": "[%(asctime)s][%(name)s][%(module)s:%(funcName)s:%(lineno)d][%(levelname)s] >>> %(message)s"
+        }
+    }
+}

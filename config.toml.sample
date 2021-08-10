@@ -1,0 +1,6 @@
+[app]
+debug=true
+
+[telegram]
+token=""
+admins=[]

@@ -7,13 +7,13 @@ from telegram.utils.request import Request
 
 from bot.bot import StickerBot
 from bot.utils import log
-from config import config
+from config import config as CONFIG
 
 logger = logging.getLogger(__name__)
 
 stickerbot = StickerBot(
     bot=ExtBot(
-        token=config.telegram.token,
+        token=CONFIG.TELEGRAM.TOKEN,
         defaults=Defaults(parse_mode=ParseMode.HTML, disable_web_page_preview=True),
         request=Request(con_pool_size=8)
     ),

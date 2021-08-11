@@ -9,7 +9,7 @@ from telegram.ext import Updater
 
 from bot.commands import COMMANDS, ADMIN_COMMANDS
 from bot.handlers import HANDLERS, ERROR_HANDLERS
-from config import config
+from config import config as CONFIG
 
 logger = logging.getLogger(__name__)
 
@@ -24,7 +24,7 @@ class StickerBot(Updater):
 
     def __set_commands(self):
         logger.debug('set commands.')
-        for admin_id in config.telegram.admins:
+        for admin_id in CONFIG.TELEGRAM.ADMINS:
             try:
                 self.bot.set_my_commands(ADMIN_COMMANDS, scope=BotCommandScopeChat(chat_id=admin_id))
             except Exception as e:

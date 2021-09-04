@@ -40,6 +40,9 @@
         },
         "PIL.PngImagePlugin": {
             "level": "WARNING"
+        },
+        "sqlalchemy.engine.Engine": {
+            "level": "DEBUG"
         }
     },
     "formatters": {

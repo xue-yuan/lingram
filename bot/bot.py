@@ -15,7 +15,6 @@ logger = logging.getLogger(__name__)
 
 class StickerBot(Updater):
     def __set_handlers(self):
-        logger.debug('set handlers.')
         for handler in HANDLERS:
             self.dispatcher.add_handler(handler)
 
@@ -23,7 +22,6 @@ class StickerBot(Updater):
             self.dispatcher.add_error_handler(error_handler)
 
     def __set_commands(self):
-        logger.debug('set commands.')
         for admin_id in CONFIG.TELEGRAM.ADMINS:
             try:
                 self.bot.set_my_commands(ADMIN_COMMANDS, scope=BotCommandScopeChat(chat_id=admin_id))
@@ -37,5 +35,13 @@ class StickerBot(Updater):
         logger.info(f'start running @{self.bot.username}.')
         self.__set_handlers()
         self.__set_commands()
-        self.start_polling(*args, **kwargs)
+        if CONFIG.APP.DEBUG:
+            self.start_polling(*args, **kwargs)
+        else:
+            self.updater.start_webhook(
+                listen='0.0.0.0',
+                port=CONFIG.APP.PORT,
+                url_path=CONFIG.TELEGRAM.TOKEN
+            )
+            self.updater.bot.setWebhook(CONFIG.APP.PORT + CONFIG.TELEGRAM.TOKEN)
         self.idle()

@@ -5,6 +5,7 @@ from telegram.ext import ExtBot
 from telegram.ext import Defaults
 from telegram.utils.request import Request
 
+from bot import database
 from bot.bot import StickerBot
 from bot.utils import log
 from config import config as CONFIG

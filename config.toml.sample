@@ -1,6 +1,10 @@
-[app]
-debug=true
+[APP]
+DEBUG=true
+TMP_FOLDER='tmp'
+DATABASE='db.sqlite3'
+PORT=9527
+DOMAIN=''
 
-[telegram]
-token=""
-admins=[]
+[TELEGRAM]
+TOKEN=""
+ADMINS=[]
